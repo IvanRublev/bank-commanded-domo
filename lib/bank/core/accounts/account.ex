@@ -23,7 +23,9 @@ defmodule Bank.Core.Accounts.Account do
   @type t() :: %__MODULE__{id: binary(), balance: integer()}
   defstruct [:id, balance: 0]
 
-  def execute(%Account{}, %DepositMoney{account_id: "000-000"}),
+  @operator_account_id Bank.operator_account_id()
+
+  def execute(%Account{}, %DepositMoney{account_id: @operator_account_id}),
     do: {:error, :unable_to_create_account}
 
   def execute(%Account{id: nil}, %DepositMoney{} = cmd) do
@@ -38,7 +40,7 @@ defmodule Bank.Core.Accounts.Account do
       %JournalEntryCreated{
         journal_entry_uuid: Ecto.UUID.generate(),
         debit: %{"#{cmd.account_id}" => cmd.amount},
-        credit: %{"000-000" => cmd.amount}
+        credit: %{@operator_account_id => cmd.amount}
       }
     ]
   end
@@ -64,7 +66,7 @@ defmodule Bank.Core.Accounts.Account do
       %JournalEntryCreated{
         journal_entry_uuid: Ecto.UUID.generate(),
         debit: %{"#{cmd.account_id}" => cmd.amount},
-        credit: %{"000-000" => cmd.amount}
+        credit: %{@operator_account_id => cmd.amount}
       }
     ]
   end
@@ -82,7 +84,7 @@ defmodule Bank.Core.Accounts.Account do
       },
       %JournalEntryCreated{
         journal_entry_uuid: Ecto.UUID.generate(),
-        debit: %{"000-000" => cmd.amount},
+        debit: %{@operator_account_id => cmd.amount},
         credit: %{"#{cmd.account_id}" => cmd.amount}
       }
     ]

@@ -1,4 +1,6 @@
 defmodule Bank.Core.Commands.SendMoneyToAccount do
+  use Domo
+
   @type t :: %__MODULE__{
           from_account_id: Bank.account_number(),
           to_account_id: Bank.account_number(),

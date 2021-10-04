@@ -1,4 +1,6 @@
 defmodule Bank.Core.Commands.CreateLoan do
+  use Domo
+
   @type t :: %__MODULE__{
           loan_id: binary(),
           account_id: binary(),

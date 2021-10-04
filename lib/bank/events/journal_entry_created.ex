@@ -1,4 +1,6 @@
 defmodule Bank.Core.Events.JournalEntryCreated do
+  use Domo
+
   alias Bank.Core.Accounting
 
   @type t :: %__MODULE__{

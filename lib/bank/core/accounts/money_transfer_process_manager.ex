@@ -22,22 +22,22 @@ defmodule Bank.Core.Accounts.MoneyTransferProcessManager do
 
   def handle(%__MODULE__{}, %MoneySentToAccount{} = evt),
     do: [
-      %ReceiveMoneyFromAccount{
+      ReceiveMoneyFromAccount.new!(
         transaction_id: evt.transaction_id,
         from_account_id: evt.from_account_id,
         to_account_id: evt.to_account_id,
         amount: evt.amount
-      }
+      )
     ]
 
   def handle(%__MODULE__{}, %MoneyReceivedFromAccountFailed{} = evt),
     do: [
-      %FailMoneyTransfer{
+      FailMoneyTransfer.new!(
         transaction_id: evt.transaction_id,
         from_account_id: evt.from_account_id,
         to_account_id: evt.to_account_id,
         amount: evt.amount
-      }
+      )
     ]
 
   def apply(_state, %MoneySentToAccount{} = evt) do

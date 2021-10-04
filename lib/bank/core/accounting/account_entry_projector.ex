@@ -36,16 +36,21 @@ defmodule Bank.Core.Accounting.AccountEntryProjector do
   end
 
   defp convert_to_entries(account_entries, journal_entry) do
-    account_entries
-    |> Enum.map(fn {account, entries} ->
-      entries
-      |> Enum.reduce(%{}, fn {type, amount}, acc ->
-        Map.put(acc, type, amount)
+    account_entries =
+      account_entries
+      |> Enum.map(fn {account, entries} ->
+        entries
+        |> Enum.reduce(%{}, fn {type, amount}, acc ->
+          Map.put(acc, type, amount)
+        end)
+        |> Map.merge(%{
+          journal_entry_uuid: journal_entry.journal_entry_uuid,
+          account: account
+        })
       end)
-      |> Map.merge(%{
-        journal_entry_uuid: journal_entry.journal_entry_uuid,
-        account: account
-      })
-    end)
+
+    Enum.each(account_entries, &AccountEntry.new!/1)
+
+    account_entries
   end
 end

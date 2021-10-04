@@ -1,4 +1,6 @@
 defmodule Bank.Core.Commands.WithdrawMoney do
+  use Domo
+
   @type t :: %__MODULE__{
           account_id: Bank.account_number(),
           amount: Bank.amount()

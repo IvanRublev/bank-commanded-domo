@@ -6,7 +6,9 @@ defmodule Bank.Core.Accounting do
   alias Bank.Repo
   import Ecto.Query
 
-  @spec create_raw_entry(Bank.account_entries(), Bank.account_entries()) ::
+  @type account_entries() :: Bank.account_entries()
+
+  @spec create_raw_entry(account_entries(), account_entries()) ::
           :ok | {:error, term()}
   def create_raw_entry(debit, credit) do
     Bank.Core.EventStore.append_to_stream("raw_entries", :any_version, [

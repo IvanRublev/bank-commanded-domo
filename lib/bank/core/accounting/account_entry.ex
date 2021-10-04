@@ -4,9 +4,10 @@ defmodule Bank.Core.Accounting.AccountEntry do
   Used to model single account entries.
   """
 
+  use Domo
   use Ecto.Schema
 
-  @type t() :: %{
+  @type t() :: %__MODULE__{
           journal_entry_uuid: binary(),
           account: binary(),
           credit: integer(),
