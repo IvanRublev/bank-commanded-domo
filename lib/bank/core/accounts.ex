@@ -14,7 +14,7 @@ defmodule Bank.Core.Accounts do
           {:ok, ExecutionResult.t()} | {:error, term()}
   def deposit_money(acc_id, amount) do
     [account_id: acc_id, amount: amount]
-    |> DepositMoney.new_ok()
+    |> DepositMoney.new()
     |> maybe_dispatch(returning: :execution_result)
   end
 
@@ -22,7 +22,7 @@ defmodule Bank.Core.Accounts do
           {:ok, ExecutionResult.t()} | {:error, term()}
   def withdraw_money(acc_id, amount) do
     [account_id: acc_id, amount: amount]
-    |> WithdrawMoney.new_ok()
+    |> WithdrawMoney.new()
     |> maybe_dispatch(returning: :execution_result)
   end
 
@@ -30,7 +30,7 @@ defmodule Bank.Core.Accounts do
           {:ok, ExecutionResult.t()} | {:error, term()}
   def send_money(from_acc_id, to_acc_id, amount) do
     [from_account_id: from_acc_id, to_account_id: to_acc_id, amount: amount]
-    |> SendMoneyToAccount.new_ok()
+    |> SendMoneyToAccount.new()
     |> maybe_dispatch(returning: :execution_result)
   end
 

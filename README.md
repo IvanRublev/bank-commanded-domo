@@ -4,7 +4,7 @@ This repo is a fork of https://github.com/vasspilka/bank example seasoned with [
 in Command and Event modules.
 
 Functions of `Account` context, process manager, and projector constructs 
-commands and events with conformance to their types by calling to `new_ok/1` or `new!`.
+commands and events with conformance to their types by calling to `new/1` or `new!`.
 
 That includes the validation of the `account_number()` value format 
 via precondition defined in `Bank` module.
