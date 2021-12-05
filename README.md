@@ -3,6 +3,8 @@
 This repo is a fork of https://github.com/vasspilka/bank example seasoned with [Domo library](https://hex.pm/packages/domo)
 in Command and Event modules.
 
+That extended example is for "Eventsourcing and CQRS in Elixir" talk by Vasilis Spilka at ElixirConf EU 2021 https://youtu.be/GEFbhMZlxzE
+
 Functions of `Account` context, process manager, and projector constructs 
 commands and events with conformance to their types by calling to `new/1` or `new!`.
 

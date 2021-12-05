@@ -6,5 +6,5 @@ defmodule Bank.Core.Commands.DepositMoney do
           amount: Bank.amount()
         }
 
-  defstruct [account_id: Bank.operator_account_id(), amount: 0]
+  defstruct account_id: Bank.operator_account_id(), amount: 0
 end
