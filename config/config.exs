@@ -47,7 +47,7 @@ config :bank, Bank.Core.Application,
   pubsub: :local,
   registry: :local
 
-config :domo, :ensure_struct_defaults, false
+config :domo, :skip_defaults, true
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

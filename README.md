@@ -38,7 +38,7 @@ iex(4)> Accounts.deposit_money("100-102", 120)
 
 The casting of Event from Command with type mismatch produces runtime error.
 
-The `config :domo, :ensure_struct_defaults, false` in `config.exs` is to disable 
+The `config :domo, :skip_defaults, true` in `config.exs` is to disable 
 verification of Commands and Events default values during compile time 
 because fields are overwritten in Accounts context, Manager, and Projector anyway.
 

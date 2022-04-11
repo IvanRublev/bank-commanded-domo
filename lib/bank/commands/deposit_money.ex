@@ -1,5 +1,5 @@
 defmodule Bank.Core.Commands.DepositMoney do
-  use Domo, ensure_struct_defaults: true
+  use Domo, skip_defaults: false
 
   @type t :: %__MODULE__{
           account_id: Bank.account_number(),
