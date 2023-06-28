@@ -14,6 +14,7 @@ via precondition defined in `Bank` module.
 That brings the following errors to the User Interface automatically:
 
 ```elixir
+iex(1)> alias Bank.Core.Accounts
 iex(1)> Accounts.deposit_money(nil, 10)        
 {:error,
  [
@@ -47,8 +48,7 @@ To start your Phoenix server:
   * Install dependencies with `mix deps.get`
   * Create and init event store database with `mix do event_store.create, event_store.init`
   * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
-  * Start Phoenix endpoint with `mix phx.server`
+  * Start iex with `iex -S mix`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
